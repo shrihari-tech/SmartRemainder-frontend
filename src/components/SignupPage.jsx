@@ -505,7 +505,7 @@ const SignupPage = () => {
     
     if (validateForm()) {
       try {
-        const response = await axios.post('http://localhost:3000/user/register', formData);
+        const response = await axios.post('https://smart-remainder-backend.vercel.app/user/register', formData);
         console.log('User registered successfully:', response.data);
         navigate('/'); // Only navigate on successful validation and registration
       } catch (error) {

@@ -53,7 +53,7 @@ const AllTasks = () => {
       try {
         const userId = sessionStorage.getItem('user');
         if (userId) {
-          const response = await axios.get(`http://localhost:3000/user/${userId}`);
+          const response = await axios.get(`https://smart-remainder-backend.vercel.app/user/${userId}`);
           setTasks(Array.isArray(response.data) ? response.data : []);
         }
       } catch (error) {
@@ -75,7 +75,7 @@ const AllTasks = () => {
 
   const confirmDelete = async () => {
     try {
-      await axios.delete(`http://localhost:3000/task/${taskToDelete}/deleteTask`);
+      await axios.delete(`https://smart-remainder-backend.vercel.app/task/${taskToDelete}/deleteTask`);
       setTasks(tasks.filter(task => task._id !== taskToDelete));
       setIsModalOpen(false);
       setSelectedTask(null);
@@ -234,7 +234,7 @@ const AllTasks = () => {
     
     if (isEditing) {
       try {
-        const response = await axios.put(`http://localhost:3000/task/${selectedTask._id}/updateTask`, formattedTaskDetails);
+        const response = await axios.put(`https://smart-remainder-backend.vercel.app/task/${selectedTask._id}/updateTask`, formattedTaskDetails);
         const updatedTasks = tasks.map(task => task._id === selectedTask._id ? { ...task, ...formattedTaskDetails } : task);
         setTasks(updatedTasks);
         setSelectedTask(null);
@@ -250,7 +250,7 @@ const AllTasks = () => {
     } else {
       try {
         const userId = sessionStorage.getItem('user');
-        const response = await axios.post('http://localhost:3000/task/addTask', { ...formattedTaskDetails, created_by: userId });
+        const response = await axios.post('https://smart-remainder-backend.vercel.app/task/addTask', { ...formattedTaskDetails, created_by: userId });
         setTasks([...tasks, response.data]);
         setIsModalOpen(false);
         setShowNotification(true);

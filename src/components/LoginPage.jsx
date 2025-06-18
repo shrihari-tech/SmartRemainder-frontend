@@ -60,7 +60,7 @@ const LoginPage = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:3000/user/login', formData);
+      const response = await axios.post('https://smart-remainder-backend.vercel.app/user/login', formData);
       const userId = response.data.user._id;
       sessionStorage.setItem('user', userId);
       await fetchProfile(userId);

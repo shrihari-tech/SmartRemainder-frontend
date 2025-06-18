@@ -71,7 +71,7 @@ const Dashboard = () => {
       try {
         const userId = sessionStorage.getItem('user');
         if (userId) {
-          const response = await axios.get(`http://localhost:3000/user/${userId}`);
+          const response = await axios.get(`https://smart-remainder-backend.vercel.app/user/${userId}`);
           if(response.data && Array.isArray(response.data)){
 
             setTasks(response.data);
@@ -213,7 +213,7 @@ const getCompletedTasksCount = (period) => {
     }
     try {
       const userId = sessionStorage.getItem('user');
-      const response = await axios.post('http://localhost:3000/task/addTask', { ...taskDetails, created_by: userId });
+      const response = await axios.post('https://smart-remainder-backend.vercel.app/task/addTask', { ...taskDetails, created_by: userId });
       setTasks([...tasks, response.data]);
       setShowNotification(true);
       setIsModalOpen(false);

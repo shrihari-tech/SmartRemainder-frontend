@@ -19,7 +19,7 @@ export const ProfileProvider = ({ children }) => {
   const fetchProfile = async (userId) => {
     try {
       if (userId) {
-        const response = await axios.get(`http://localhost:3000/user/profile/${userId}`);
+        const response = await axios.get(`https://smart-remainder-backend.vercel.app/user/profile/${userId}`);
         // Ensure all properties exist even if some are missing from the response
         setProfile({
           ...DEFAULT_PROFILE,
@@ -35,7 +35,7 @@ export const ProfileProvider = ({ children }) => {
 
   const updateProfile = async (userId, updatedProfile) => {
     try {
-      const response = await axios.put(`http://localhost:3000/user/update-profile/${userId}`, updatedProfile);
+      const response = await axios.put(`https://smart-remainder-backend.vercel.app/update-profile/${userId}`, updatedProfile);
       // Merge updated profile with default to ensure all properties exist
       setProfile({
         ...DEFAULT_PROFILE,

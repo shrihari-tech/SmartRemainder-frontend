@@ -120,7 +120,7 @@ const TodayTask = () => {
       try {
         const userId = sessionStorage.getItem('user');
         if (userId) {
-          const response = await axios.get(`http://localhost:3000/user/${userId}`);
+          const response = await axios.get(`https://smart-remainder-backend.vercel.app/user/${userId}`);
           // console.log('Tasks:', response.data);
           setTasks(Array.isArray(response.data) ? response.data : []);
         }
@@ -217,7 +217,7 @@ const TodayTask = () => {
     }
     try {
       const userId = sessionStorage.getItem('user');
-      const response = await axios.post('http://localhost:3000/task/addTask', { 
+      const response = await axios.post('https://smart-remainder-backend.vercel.app/task/addTask', { 
         ...taskDetails, 
         created_by: userId 
       });
