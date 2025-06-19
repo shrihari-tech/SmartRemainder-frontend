@@ -35,7 +35,7 @@ export const ProfileProvider = ({ children }) => {
 
   const updateProfile = async (userId, updatedProfile) => {
     try {
-      const response = await axios.put(`https://smart-remainder-backend.vercel.app/update-profile/${userId}`, updatedProfile);
+      const response = await axios.put(`https://smart-remainder-backend.vercel.app/user/update-profile/${userId}`, updatedProfile);
       // Merge updated profile with default to ensure all properties exist
       setProfile({
         ...DEFAULT_PROFILE,
@@ -43,8 +43,10 @@ export const ProfileProvider = ({ children }) => {
       });
       return response.data.message;
     } catch (error) {
-      console.error('Error updating profile:', error);
-      throw new Error('Failed to update profile');
+    console.error('Error response:', error.response?.data);
+    console.error('Error status:', error.response?.status);
+    console.error('Full error object:', error);
+    throw new Error('Failed to update profile');
     }
   };
 
